@@ -1,8 +1,9 @@
 class CreateBucketLists < ActiveRecord::Migration
   def change
     create_table :bucketlists do |t|
-      t.string :bucketlist
-      t.string :user_id
+      t.string :bucketlistname
+      t.integer :user_id
+      t.integer :bucketlistgoal_id
     end
   end
 end

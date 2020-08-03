@@ -1,4 +1,4 @@
-class BucketListGoals < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :BucketList
+class Bucketlistgoal < ActiveRecord::Base
+    has_many :bucketlists
+    has_many :users, through: :bucketlists
 end
