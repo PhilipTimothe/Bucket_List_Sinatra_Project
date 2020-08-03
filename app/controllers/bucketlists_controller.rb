@@ -2,14 +2,20 @@ class BucketListsController < ApplicationController
 
     #index action
     get '/bucketlists' do
-
-        @bucketlist = current_user.bucketlists
-        erb :'bucketlists/index'
+        if logged_in?
+            @bucketlist = current_user.bucketlists
+            erb :'bucketlists/index'
+        else
+            redirect '/login'
+        end
     end
 
     #new action(view for a form that will create bucketlist)
     get '/bucketlists/new' do 
-        erb :'bucketlists/new'
+        if logged_in?
+            erb :'bucketlists/new'
+        else
+            redirect '/login'
     end
 
     #create action
@@ -22,11 +28,15 @@ class BucketListsController < ApplicationController
 
     #show action
     get '/bucketlists/:id' do 
-        @list = current_user.bucketlists.find_by_id(params[:id])
-        if @list
-            erb :'bucketlists/show'
+        if logged_in?
+            @list = current_user.bucketlists.find_by_id(params[:id])
+            if @list
+                erb :'bucketlists/show'
+            else
+                redirect '/bucketlists'
+            end
         else
-            redirect '/bucketlists'
+            redirect '/login'
         end
     end 
 
