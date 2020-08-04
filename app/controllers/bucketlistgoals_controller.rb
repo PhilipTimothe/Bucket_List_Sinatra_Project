@@ -1,14 +1,15 @@
-class BucketListsController < ApplicationController
+class BucketListGoalsController < ApplicationController
 
     #index action
-    get '/bucketlists' do
+    get '/bucketlistgoals' do
         if logged_in?
-            @bucketlist = current_user.bucketlists
-            erb :'bucketlists/index'
+            @goals = current_user.bucketlists.bucketlistgoals
+            erb :'bucketlistgoals/index'
         else
             redirect '/login'
         end
     end
+    #continue tomorroowwwww today's date Aug 3 2020
 
     #new action(view for a form that will create bucketlist)
     get '/bucketlists/new' do 
