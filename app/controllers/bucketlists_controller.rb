@@ -31,7 +31,8 @@ class BucketListsController < ApplicationController
     get '/bucketlists/:id' do 
         if logged_in?
             @list = current_user.bucketlists.find_by_id(params[:id])
-            @goals = current_user.bucketlists.bucketlistgoals
+            @goals = @list.bucketlistgoals
+            # binding.pry
             if @list
                 erb :'bucketlistgoals/index'
             else

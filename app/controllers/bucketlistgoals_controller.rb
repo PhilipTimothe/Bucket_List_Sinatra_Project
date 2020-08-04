@@ -22,9 +22,9 @@ class BucketListGoalsController < ApplicationController
 
     #create action
     post '/bucketlistgoals' do
-        current_user.bucketlists.bucketlistgoals.create(params)
+        
         # redirect "/bucketlists/"
-        redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
+        redirect "/bucketlists/#{bucketlists.id}"
     end
 
 
@@ -45,21 +45,24 @@ class BucketListGoalsController < ApplicationController
 
     #edit action(view for a form that will edit bucketlist)
     get '/bucketlistgoals/:id/edit' do 
-        @goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        list = current_user.bucketlists
+        @goal = list.bucketlistgoals.find_by_id(params[:id])
         erb :'bucketlistgoals/edit'
     end
 
     #update action
     patch '/bucketlistgoals/:id' do 
         params.delete(:_method)
-        @goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        list = current_user.bucketlists
+        @goal = list.bucketlistgoals.find_by_id(params[:id])
         @goal.update(params)
         redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
     end
 
     #delete action
     delete '/bucketlistgoals/:id' do
-        goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        list = current_user.bucketlists
+        goal = list.bucketlistgoals.find_by_id(params[:id])
         goal.destroy
         redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
     end
