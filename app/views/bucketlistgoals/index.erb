@@ -1,0 +1,10 @@
+<h2><%=@list%></h2>
+
+<%@goals.each do |list|%>
+    <p><%=list.goal%></p>
+    <form action="bucketlistgoals/<%=list.id%>" method='post'>
+        <input type="hidden" name="method" value="DELETE">
+        <input type="submit" value="delete">
+    </form>
+    <a href="/bucketlistgoals/<%=list.id%>/edit>Edit Goal</a>
+<%end%>

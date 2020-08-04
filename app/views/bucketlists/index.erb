@@ -1,7 +1,7 @@
 <h2>My Bucketlists</h2>
 
 <%@bucketlist.each do |list|%>
-    <p><%=list.bucketlistname%></p>
+    <p><a href="/bucketlists/<%=list.id%>><%=list.bucketlistname%></a></p>
     <form action="bucketlists/<%=list.id%>" method='post'>
         <input type="hidden" name="method" value="DELETE">
         <input type="submit" value="delete">

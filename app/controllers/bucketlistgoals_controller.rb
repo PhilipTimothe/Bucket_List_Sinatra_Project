@@ -2,66 +2,66 @@ class BucketListGoalsController < ApplicationController
 
     #index action
     get '/bucketlistgoals' do
-        if logged_in?
-            @goals = current_user.bucketlists.bucketlistgoals
-            erb :'bucketlistgoals/index'
-        else
-            redirect '/login'
-        end
+        # if logged_in?
+        #     @goals = current_user.bucketlists.bucketlistgoals
+        #     @bucketlist = current_user.bucketlists
+        #     erb :'bucketlistgoals/index'
+        # else
+        #     redirect '/login'
+        # end
     end
-    #continue tomorroowwwww today's date Aug 3 2020
 
     #new action(view for a form that will create bucketlist)
-    get '/bucketlists/new' do 
+    get '/bucketlistgoals/new' do 
         if logged_in?
-            erb :'bucketlists/new'
+            erb :'bucketlistgoals/new'
         else
             redirect '/login'
         end
     end
 
     #create action
-    post '/bucketlists' do
-        current_user.bucketlists.create(params)
-        redirect "/bucketlists"
-        # redirect "/bucketlists/#{bucketlists.id}"
+    post '/bucketlistgoals' do
+        current_user.bucketlists.bucketlistgoals.create(params)
+        # redirect "/bucketlists/"
+        redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
     end
 
 
     #show action
-    get '/bucketlists/:id' do 
-        if logged_in?
-            @list = current_user.bucketlists.find_by_id(params[:id])
-            if @list
-                erb :'bucketlists/show'
-            else
-                redirect '/bucketlists'
-            end
-        else
-            redirect '/login'
-        end
-    end 
+    # get '/bucketlistgoals/:id' do 
+    #     if logged_in?
+    #         @goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+    #         if @goal
+    #             erb :'bucketlists/show'
+    #         else
+    #             redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
+    #         end
+    #     else
+    #         redirect '/login'
+    #     end
+    # end 
 
 
     #edit action(view for a form that will edit bucketlist)
-    get '/bucketlists/:id/edit' do 
-        @list = current_user.bucketlists.find_by_id(params[:id])
-        erb :'bucketlists/edit'
+    get '/bucketlistgoals/:id/edit' do 
+        @goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        erb :'bucketlistgoals/edit'
     end
 
     #update action
-    patch '/bucketlists/:id' do 
+    patch '/bucketlistgoals/:id' do 
         params.delete(:_method)
-        @list = current_user.bucketlists.find_by_id(params[:id])
-        @list.update(params)
-        redirect '/bucketlists'
+        @goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        @goal.update(params)
+        redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
     end
 
     #delete action
-    delete '/bucketlists/:id' do
-        list = current_user.bucketlists.find_by_id(params[:id])
-        list.destroy
-        redirect '/bucketlists'
+    delete '/bucketlistgoals/:id' do
+        goal = current_user.bucketlists.bucketlistgoals.find_by_id(params[:id])
+        goal.destroy
+        redirect "/bucketlists/#{bucketlistgoals.bucketlist_id}"
     end
 
 
