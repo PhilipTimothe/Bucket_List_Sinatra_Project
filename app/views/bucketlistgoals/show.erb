@@ -1,0 +1,7 @@
+<h3><%=@list.goal%></h3>
+
+<form action="<%=@list.id%>" method='post'>
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="button"><a href="/bucketlistgoals/<%=@list.id%>/edit"> Edit </a></button>
+    <input type="submit" value="delete"></br>
+</form>

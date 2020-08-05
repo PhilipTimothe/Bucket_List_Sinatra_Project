@@ -1,9 +1,7 @@
-<form action="/bucketlistgoals/<%=@goal.id%>" method='post'>
+<form action="/bucketlistgoals/<%=@list.id%>" method='post'>
     <input type="hidden" name="_method" value="PATCH">
     <label for="goal">Edit Goal</label>
-    <input id="goal" type="text" name="goal" value="<%=@goal.goal%>"><br>
-    <label for="completed">Completed</label>
-    <input id="completed" type="text" name="completed" value="<%=@goal.completed%>"><br>
+    <input id="goal" type="text" name="goal" value="<%=@list.goal%>"><br>
 
     <button id="submit" type="submit">Update</button>
 

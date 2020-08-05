@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     post '/signup' do
         user = User.create(params)
         session[:user_id] = user.id
-        redirect '/bucketlists'
+        redirect '/bucketlistgoals'
     end
 
     get '/login' do 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect '/bucketlists'
+            redirect '/bucketlistgoals'
         else
             @error = 'Either Password or Email is incorrect!'
             erb :'users/login'

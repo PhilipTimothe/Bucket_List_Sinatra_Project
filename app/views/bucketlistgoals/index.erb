@@ -1,21 +1,7 @@
-<h2><%=@list.bucketlistname%> Bucket List</h2>
+<h2>Goals</h2>
 
-<form action="/bucketlistgoals" method="post">
-    <label for="goal">New Goal</label>
-    <input id="goal" type="text" name="goal"><br>
-    <label for="completed">Completed</label>
-    <input id="completed" type="text" name="completed"><br>
-
-    <button id="submit" type="submit">Submit</button>
-</form>
-
-<%@goals.each do |list|%>
-    <p><%=list.goal%></p>
-    <form action="bucketlistgoals/<%=list.id%>" method='post'>
-        <input type="hidden" name="method" value="DELETE">
-        <input type="submit" value="delete">
-    </form>
-    <a href="/bucketlistgoals/<%=list.id%>/edit">Edit Goal</a>
+<%@bucketlistgoal.each do |list|%>
+    <p><a href="/bucketlistgoals/<%=list.id%>"><%=list.goal%></a></p>
 <%end%>
 
-
+<h4><a href="/bucketlistgoals/new">Add a Goal!</a></h4>

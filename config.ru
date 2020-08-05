@@ -9,6 +9,5 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 use Rack::MethodOverride
 
 use UsersController
-use BucketListsController
 use BucketListGoalsController
 run ApplicationController
