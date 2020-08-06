@@ -10,34 +10,20 @@ class ApplicationController < Sinatra::Base
     # SecureRandom.hex(64)
   end
 
+  #Index action = home page
   get "/" do
     erb :welcome
   end
 
+  # Helper actions for authentication and authorization of users 
   helpers do 
     def current_user
       @user = User.find_by(id: session[:user_id])
     end
 
     def logged_in?
-        !!current_user
-      end
-
-    # def self.current_user(session)
-    #   session[:user_id]
-    #   @user = User.find_by(id: session[:user_id])
-    #   @user
-    # end
-
-    # def self.is_logged_in?(session)
-    #   if session[:user_id]
-    #       true
-    #   end
-    # end
-
+      !!current_user
+    end
   end
-
-
-
 
 end

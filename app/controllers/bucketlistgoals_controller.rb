@@ -65,6 +65,4 @@ class BucketListGoalsController < ApplicationController
         redirect '/bucketlistgoals'
     end
 
-
-
 end

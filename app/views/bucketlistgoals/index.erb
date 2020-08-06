@@ -1,8 +1,8 @@
 <h2 style="text-align: center;">Goals</h2>
 
-<%@bucketlistgoal.each do |list|%>
-    <p><a href="/bucketlistgoals/<%=list.id%>" style="text-decoration: none; color: black;"><%=list.goal%></a></p>
-<%end%>
+    <%@bucketlistgoal.each do |list|%>
+        <p><a href="/bucketlistgoals/<%=list.id%>" style="text-decoration: none; color: black;"><%=list.goal%></a></p>
+    <%end%>
 
-<button type="button" style="padding: 2px;"><a href="/bucketlistgoals/new" style="text-decoration: none; color: black;">Add a Goal</a></button>
+    <button type="button" style="padding: 2px;"><a href="/bucketlistgoals/new" style="text-decoration: none; color: black;">Add a Goal</a></button>
 
