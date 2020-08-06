@@ -16,15 +16,15 @@
   <body>
     <nav>
       <%if current_user%>
-        <form action="/logout" method='post'>
+        <form action="/logout" method='post' style="display: inline;">
           <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Logout">
+          <button type="submit" value="Logout" style="padding: 2px;"> Logout </button>
         </form>
-        <a href="/bucketlistgoals">Your Bucket List Goals</a>
-        <a href="/bucketlistgoals/new">New Bucket List Goal</a>
+        <button type="button" style="padding: 2px;"><a href="/bucketlistgoals" style="text-decoration: none; color: black;">My Bucket List Goals</a></button>
+        <button type="button" style="padding: 2px;"><a href="/bucketlistgoals/new" style="text-decoration: none; color: black;">Add a New Bucket List Goal</a></button>
       <%else%>
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
+      <button type="button" style="padding: 2px;"><a href="/login" style="text-decoration: none; color: black;">Login</a></button>
+      <button type="button" style="padding: 2px;"><a href="/signup" style="text-decoration: none; color: black;">Sign Up</a></button>
       <%end%>
     </nav>
     <div class="wrapper">

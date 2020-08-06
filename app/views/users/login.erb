@@ -1,11 +1,13 @@
-<h1>Login<h1>
-<%if @error%>
-    <p><%=@error%>
-<%end%>
-<form action="/login" method="post">
-    <label for="user_name">Username:</label>
+<h1 style="text-align: center;">Login</h1>
+
+<form action="/login" method="post" style="text-align: center;">
+    <label for="email">Email:</label>
     <input type="text" name="email" id="">
     <label for="password">Password:</label>
     <input type="password" name="password" id="">
     <input type="submit" value="login">
 </form>
+
+<%if @error%>
+    <p><%=@error%>
+<%end%>

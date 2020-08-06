@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: lightgray;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -48,7 +48,7 @@
   }
 
   p {
-    margin-bottom: 18px;
+    margin-bottom: 8px;
   }
 
   .main {
@@ -56,6 +56,7 @@
   }
 
   .content {
+    text-align: center;
     float: left;
     width: 60%; /* 480px / 800px */
   }
