@@ -11,9 +11,11 @@ class UsersController < ApplicationController
         if user.valid?
             # binding.pry
             session[:user_id] = user.id
+            flash[:message] = "Sign Up Successful!!"
             redirect '/bucketlistgoals'
         else
-            erb :'users/signup'
+            flash[:error] = "Please Fill In Blanks"
+            redirect '/signup'
         end
     end
 
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
     #essentially a create action but specifically authenicating params
     post '/login' do
         user = User.find_by(email: params[:email])
+        # binding.pry
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             # add success message 

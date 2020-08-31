@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20200806145938) do
 
   create_table "bucketlistgoals", force: :cascade do |t|
     t.string  "goal"
-    t.boolean "completed"
     t.integer "user_id"
     t.string  "description"
   end

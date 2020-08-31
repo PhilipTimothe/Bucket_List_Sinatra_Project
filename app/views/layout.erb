@@ -16,14 +16,6 @@
   <body>
     <nav>
 
-      <%if flash[:error]%>
-        <p style="text-align: center; padding-top: 10px;" style="color:red"><%= flash[:error] %></p>
-      <%end%>
-
-      <%if flash[:message]%>
-        <p style="text-align: center; padding-top: 10px;" style="color:blue"><%= flash[:error] %></p>
-      <%end%> 
-
       <%if current_user%>
         <form action="/logout" method='post' style="display: inline;">
           <input type="hidden" name="_method" value="DELETE">
@@ -36,6 +28,15 @@
       <button type="button" style="padding: 2px;"><a href="/signup" style="text-decoration: none; color: black;">Sign Up</a></button>
       <%end%>
     </nav>
+
+    <%if flash[:error]%>
+      <p style="text-align: center; padding-top: 10px; color:red"><%= flash[:error] %></p>
+    <%end%>
+
+    <%if flash[:message]%>
+      <p style="text-align: center; padding-top: 10px; color:blue"><%= flash[:message] %></p>
+    <%end%> 
+
     <div class="wrapper">
 
         <%= yield %>

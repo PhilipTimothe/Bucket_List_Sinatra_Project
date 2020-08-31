@@ -6,7 +6,8 @@ class BucketListGoalsController < ApplicationController
             @bucketlistgoal = current_user.bucketlistgoals
             erb :'bucketlistgoals/index'
         else
-            redirect '/login'
+            flash[:error] = "Please Sign Up or Log In"
+            redirect '/'
         end
     end
 
@@ -15,17 +16,24 @@ class BucketListGoalsController < ApplicationController
         if logged_in?
             erb :'bucketlistgoals/new'
         else
-            redirect '/login'
+            flash[:error] = "Please Sign Up or Log In"
+            redirect '/'
         end
     end
 
     #create action
     post '/bucketlistgoals' do
-        goals = current_user.bucketlistgoals.build(params)
-        goals.completed = false
-        goals.save
-        redirect "/bucketlistgoals"
+        goals = current_user.bucketlistgoals.new(params)
+        # binding.pry
+        if goals.save 
+            flash[:message] = "Created a goal succesfully!!"
+            redirect "/bucketlistgoals"
+        else
+            flash[:error] = "Goal creation not succesful: Please fill in blank inputs"
+            #{goals.errors.full_message.to_sentence} -- failed error implementation
+            redirect "/bucketlistgoals/new"
         # redirect "/bucketlists/#{bucketlists.id}"
+        end
     end
 
 
