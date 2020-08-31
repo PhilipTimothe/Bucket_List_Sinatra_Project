@@ -8,8 +8,13 @@ class UsersController < ApplicationController
     #create action
     post '/signup' do
         user = User.create(params)
-        session[:user_id] = user.id
-        redirect '/bucketlistgoals'
+        if user.valid?
+            # binding.pry
+            session[:user_id] = user.id
+            redirect '/bucketlistgoals'
+        else
+            erb :'users/signup'
+        end
     end
 
     #essentially another new action
@@ -22,10 +27,15 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
+            # add success message 
+            flash[:message] = "Welcome #{user.user_name}"
             redirect '/bucketlistgoals'
         else
-            @error = 'Either Password or Email is incorrect!'
-            erb :'users/login'
+            # Error message
+            flash[:error] = "Either Password or Email is incorrect!"
+            redirect '/login'
+            # @error = 'Either Password or Email is incorrect!'
+            # erb :'users/login'
         end
     end
 
